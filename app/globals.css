@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #ff5401;
+  --color-brand-hover: #e64b00;
+  --color-brand-bright: #ff7733;
+  --color-brand-deep: #9a3412;
+  --color-brand-soft: #ffe4d6;
+  --color-accent: #f41b32;
+  --color-ink: #0d0c0b;
+  --color-ink-soft: #191714;
+  --color-ink-line: #332f2a;
+  --color-paper: #f5f2ed;
+  --color-paper-deep: #eae5dd;
+  --color-line: #06c755;
+  --color-line-hover: #05b34c;
+
+  --font-sans: var(--font-prompt), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Tahoma, Arial, sans-serif;
+
+  @keyframes heat-in {
+    from {
+      opacity: 0;
+      transform: scale(0.55);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@utility bg-gradient-brand {
+  background-image: linear-gradient(88deg, #f41b32 0.93%, #ff5401 64.19%);
+}
+
+@utility rule-gradient-brand {
+  background-image: linear-gradient(88deg, #f41b32 0.93%, #ff5401 64.19%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--color-ink) var(--color-paper);
+  }
+
+  body {
+    font-family: var(--font-prompt), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Tahoma, Arial, sans-serif;
+    font-feature-settings: "ss01";
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: #ffffff;
+  }
+
+  section[id],
+  div[id="lead-form"] {
+    scroll-margin-top: 5rem;
+  }
+
+  .heat-cell {
+    animation: heat-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .heat-cell {
+      animation: none;
+    }
+  }
+}
